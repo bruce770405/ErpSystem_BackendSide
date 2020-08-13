@@ -22,8 +22,8 @@ public class OrderDoSaveRq extends RequestData {
 
     private String imei;
 
-    private String maintain;
+    private String errorDesc;
 
-    private String pin;
+    private String devicePin;
 
 }

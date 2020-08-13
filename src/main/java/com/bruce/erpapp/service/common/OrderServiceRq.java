@@ -24,7 +24,7 @@ public class OrderServiceRq {
 
     private String gender;
 
-    private String maintain;
+    private String errorDesc;
 
     private String pin;
 

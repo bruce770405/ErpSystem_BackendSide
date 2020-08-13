@@ -26,8 +26,10 @@ public class OrderDoUpdateRq extends RequestData {
 
     private String errorDesc;
 
-    /** 備註. */
-//    private List<String> memo;
+    /**
+     * 備註.
+     */
+    private String memo;
 
     private String devicePin;
 

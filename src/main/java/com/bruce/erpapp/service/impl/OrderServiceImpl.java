@@ -2,8 +2,6 @@ package com.bruce.erpapp.service.impl;
 
 import com.bruce.erpapp.common.emums.GenderType;
 import com.bruce.erpapp.common.emums.OrderFixStatus;
-import com.bruce.erpapp.common.utils.ConvertPlusUtils;
-import com.bruce.erpapp.common.utils.JsonUtils;
 import com.bruce.erpapp.persistent.dao.CustomerDao;
 import com.bruce.erpapp.persistent.dao.OrderDao;
 import com.bruce.erpapp.persistent.entity.CustomerEntity;
@@ -13,7 +11,6 @@ import com.bruce.erpapp.service.bean.OrderBean;
 import com.bruce.erpapp.service.common.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -64,16 +61,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderServiceRs saveOrder(OrderServiceRq rq) {
         var rs = new OrderServiceRs();
-        var systemDate = new Date();
+        final var systemDate = new Date();
         //  先查客戶
 
         Long customerId = null;
-        List<CustomerEntity> results = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
+        var results = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
 
         if (CollectionUtils.isEmpty(results)) { //先寫一筆
             var entity = new CustomerEntity();
             entity.setAddress("");
             entity.setCreateTime(systemDate);
+            entity.setUpdateTime(systemDate);
             entity.setCustomerName(rq.getCustName());
             entity.setEmail("");
             entity.setLevel("0");
@@ -97,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
         entity.setCustomerId(customerId);
         entity.setColor(rq.getDeviceColor());
         entity.setDevicePin(rq.getPin());
-        entity.setErrorDesc(rq.getMaintain());
+        entity.setErrorDesc(rq.getErrorDesc());
         entity.setImei(rq.getImei());
         entity.setFixAmount(rq.getAmount());
         entity.setStatus(OrderFixStatus.IN_ORDER.getCode());
@@ -151,22 +149,27 @@ public class OrderServiceImpl implements OrderService {
         var custIdSet = orderList.stream().map(order -> order.getCustomerId()).collect(Collectors.toSet());
         var customerEntityMap = getCustomerEntityMap(custIdSet);
 
-        rs.setOrderBeanList(orderList.stream().map(order -> {
-            var bean = OrderBean.builder().orderId(order.getOrderId())
-                    .device(order.getDeviceName())
-                    .fixAmount(order.getFixAmount())
-                    .errorDesc(order.getErrorDesc()).color(order.getColor())
-                    .memo(order.getMemo())
-                    .status(OrderFixStatus.findByCode(order.getStatus()).getMemo())
-                    .devicePin(order.getDevicePin())
-                    .gender(GenderType.findByDbCode(customerEntityMap.get(order.getCustomerId()).getGender()).getCode())
-                    .phone(customerEntityMap.get(order.getCustomerId()).getPhone())
-                    .updateTime(DateFormatUtils.format(order.getUpdateTime(),"yyyy/MM/dd HH:mm:ss"))
-                    .custName(customerEntityMap.get(order.getCustomerId()).getCustomerName()).build();
-            return bean;
-        }).collect(Collectors.toList()));
-
+        rs.setOrderBeanList(orderList.stream().map(order -> this.createOrderBean(order, customerEntityMap)).collect(Collectors.toList()));
         return rs;
+    }
+
+    protected OrderBean createOrderBean(final OrderEntity order, final Map<Long, CustomerEntity> customerEntityMap) {
+        return OrderBean.builder()
+                .orderId(order.getOrderId())
+                .device(order.getDeviceName())
+                .fixAmount(order.getFixAmount())
+                .errorDesc(order.getErrorDesc()).color(order.getColor())
+                .memo(order.getMemo())
+                .status(OrderFixStatus.findByCode(order.getStatus()).getMemo())
+                .devicePin(order.getDevicePin())
+                .imei(order.getImei())
+                .devicePin(order.getDevicePin())
+                .gender(GenderType.findByDbCode(customerEntityMap.get(order.getCustomerId()).getGender()).getCode())
+                .phone(customerEntityMap.get(order.getCustomerId()).getPhone())
+                .date(DateFormatUtils.format(order.getCreateTime(), "yyyy/MM/dd"))
+                .time(DateFormatUtils.format(order.getCreateTime(), "HH:mm"))
+                .updateTime(DateFormatUtils.format(order.getUpdateTime(), "yyyy/MM/dd HH:mm:ss"))
+                .custName(customerEntityMap.get(order.getCustomerId()).getCustomerName()).build();
     }
 
     /**
@@ -182,21 +185,36 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * memo額外設計提出增加方式.
+     *
      * @param rq
      */
     @Override
     public void updateOrder(OrderServiceUpdateRq rq) {
-        var rs = new OrderServiceRs();
-
+        final var systemDate = new Date();
         orderDao.findById(rq.getOrderId()).ifPresentOrElse(
                 (entity) -> {
                     entity.setFixAmount(rq.getAmount());
-                    entity.setUpdateTime(new Date());
+                    entity.setErrorDesc(rq.getErrorDesc());
+                    entity.setDeviceName(rq.getDevice());
+                    entity.setColor(rq.getDeviceColor());
+                    entity.setMemo(rq.getMemo());
+                    entity.setUpdateTime(systemDate);
                     entity.setStatus(rq.getStatus());
                     orderDao.save(entity);
                 }, () -> {
 //                    throw new Exception();
                 });
+
+        var results = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
+        if (CollectionUtils.isNotEmpty(results) && CollectionUtils.size(results) == 1) {
+            var entity = results.get(0);
+            entity.setUpdateTime(systemDate);
+            entity.setCustomerName(rq.getCustName());
+            entity.setPhone(rq.getPhone());
+            customerDao.save(entity);
+        } else {
+//            throw new Exception();
+        }
 
     }
 }

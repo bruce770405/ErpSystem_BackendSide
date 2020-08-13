@@ -3,7 +3,6 @@ package com.bruce.erpapp.service.common;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 public class OrderServiceUpdateRq {
@@ -26,7 +25,7 @@ public class OrderServiceUpdateRq {
 
     private String pin;
 
-    private List<String> memo;
+    private String memo;
 
     private String status;
 

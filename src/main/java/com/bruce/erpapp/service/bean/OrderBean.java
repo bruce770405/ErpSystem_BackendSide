@@ -32,10 +32,14 @@ public class OrderBean {
 
     private String memo;
 
-    private Date createTime;
-
     private String updateTime;
 
     private String status;
+
+    /** 創建日期. */
+    private String date;
+
+    /** 創建時間. */
+    private String time;
 
 }

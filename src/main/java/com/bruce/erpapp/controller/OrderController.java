@@ -11,20 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.expression.Operation;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.maxBy;
-import static java.util.stream.Collectors.toMap;
 
 @RestController
 @RequestMapping("/order")
@@ -62,7 +51,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/query/{orderKey}")
-    public OrderDoQueryOneRs queryOneItem(@Param("orderKey") String orderKxy) {
+    public OrderDoQueryOneRs queryOneItem(@PathVariable("orderKey") String orderKxy) {
         var response = new OrderDoQueryOneRs();
         var rq = new OrderServiceQueryRq();
         rq.setOrderId(orderKxy);
@@ -79,7 +68,6 @@ public class OrderController {
      */
     @PostMapping("/add")
     public OrderDoSaveRs addOne(@RequestBody OrderDoSaveRq viewForm) {
-        var response = new OrderDoSaveRs();
         var rq = new OrderServiceRq();
         rq.setPhone(viewForm.getPhone());
         rq.setAbout(viewForm.getMemo());
@@ -89,9 +77,11 @@ public class OrderController {
         rq.setGender(viewForm.getGender());
         rq.setImei(viewForm.getImei());
         rq.setCustName(viewForm.getCustName());
-        rq.setMaintain(viewForm.getMaintain());
-        rq.setPin(viewForm.getPin());
+        rq.setErrorDesc(viewForm.getErrorDesc());
+        rq.setPin(viewForm.getDevicePin());
         var rs = orderService.saveOrder(rq);
+
+        var response = new OrderDoSaveRs();
         response.setOrderId(rs.getOrderId());
         response.setDate(rs.getDate());
         response.setTime(rs.getTime());
@@ -110,7 +100,7 @@ public class OrderController {
         var rq = new OrderServiceUpdateRq();
         rq.setPhone(viewForm.getPhone());
         rq.setOrderId(viewForm.getOrderId());
-//        rq.setMemo(viewForm.getMemo());
+        rq.setMemo(viewForm.getMemo());
         rq.setAmount(ConvertPlusUtils.str2BigDecimal(viewForm.getFixAmount()));
         rq.setDevice(viewForm.getDevice());
         rq.setDeviceColor(viewForm.getColor());
