@@ -12,7 +12,7 @@ public class SystemExceptionHandler {
 
     @ExceptionHandler({SystemException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseData handleYeolException(SystemException e) {
+    public ResponseData handleException(SystemException e) {
         var response = new ResponseData();
         response.setStatus(e.getStatus());
         return response;

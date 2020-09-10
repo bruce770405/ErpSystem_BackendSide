@@ -1,4 +1,6 @@
 package com.bruce.erpapp.common.models;
 
-public class RequestData {
+import java.io.Serializable;
+
+public class RequestData implements Serializable {
 }

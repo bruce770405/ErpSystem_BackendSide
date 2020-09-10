@@ -1,5 +1,6 @@
 package com.bruce.erpapp.service;
 
+import com.bruce.erpapp.common.errorhandle.exception.SystemException;
 import com.bruce.erpapp.service.common.*;
 
 /**
@@ -7,32 +8,13 @@ import com.bruce.erpapp.service.common.*;
  */
 public interface OrderService {
 
-    /**
-     * 創建一筆新的orderId給前端.
-     *
-     * @return
-     */
     String queryOrderId();
 
-    /**
-     * @param rq
-     */
-    OrderServiceRs saveOrder(OrderServiceRq rq);
+    OrderServiceRs saveOrder(OrderServiceRq rq) throws SystemException;
 
-    /**
-     * @param rq
-     * @return
-     */
     OrderServiceQueryRs queryOrder(OrderServiceQueryRq rq);
 
-    /**
-     * @param rq
-     * @return
-     */
     OrderServiceQueryRs queryOrders(OrderServiceQueryRq rq);
 
-    /**
-     * @param rq
-     */
-    void updateOrder(OrderServiceUpdateRq rq);
+    void updateOrder(OrderServiceUpdateRq rq) throws SystemException;
 }

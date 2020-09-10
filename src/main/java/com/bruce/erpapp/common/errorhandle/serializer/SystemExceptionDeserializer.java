@@ -22,19 +22,6 @@ public class SystemExceptionDeserializer extends JsonDeserializer<SystemExceptio
 
         JsonNode node = jp.readValueAsTree();
 
-        // 錯誤訊息參數
-        JsonNode paramsNode = node.get("params");
-        if (paramsNode != null) {
-
-//            ErrorParams params = null;
-//            try {
-//                params = JsonUtilsEx.getObject(paramsNode.toString(), ErrorParams.class);
-//            } catch (Exception e) {
-//                log.error(e, e);
-//            }
-//            error.setParams(params);
-        }
-
         // 回應狀態
         JsonNode statusNode = node.get("status");
 

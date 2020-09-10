@@ -1,6 +1,5 @@
 package com.bruce.erpapp.common.models;
 
-import com.bruce.erpapp.common.errorhandle.ErrorCode;
 import com.bruce.erpapp.common.errorhandle.ErrorStatus;
 import lombok.Data;
 

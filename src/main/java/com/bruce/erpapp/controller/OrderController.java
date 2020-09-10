@@ -1,6 +1,7 @@
 package com.bruce.erpapp.controller;
 
 import com.bruce.erpapp.common.emums.OrderFixStatus;
+import com.bruce.erpapp.common.errorhandle.exception.SystemException;
 import com.bruce.erpapp.common.utils.ConvertPlusUtils;
 import com.bruce.erpapp.controller.models.*;
 import com.bruce.erpapp.service.OrderService;
@@ -22,13 +23,6 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    /**
-     * 查維修單紀錄.
-     *
-     * @param viewForm
-     * @return
-     * @throws ParseException
-     */
     @PostMapping("/query")
     public OrderDoQueryRs query(@RequestBody OrderDoQueryRq viewForm) throws ParseException {
         var response = new OrderDoQueryRs();
@@ -44,12 +38,6 @@ public class OrderController {
         return response;
     }
 
-    /**
-     * 查維修單紀錄.
-     *
-     * @param orderKxy
-     * @return
-     */
     @GetMapping("/query/{orderKey}")
     public OrderDoQueryOneRs queryOneItem(@PathVariable("orderKey") String orderKxy) {
         var response = new OrderDoQueryOneRs();
@@ -60,14 +48,8 @@ public class OrderController {
         return response;
     }
 
-    /**
-     * 新增維修單.
-     *
-     * @param viewForm
-     * @return
-     */
     @PostMapping("/add")
-    public OrderDoSaveRs addOne(@RequestBody OrderDoSaveRq viewForm) {
+    public OrderDoSaveRs addOne(@RequestBody OrderDoSaveRq viewForm) throws SystemException {
         var rq = new OrderServiceRq();
         rq.setPhone(viewForm.getPhone());
         rq.setAbout(viewForm.getMemo());
@@ -88,14 +70,8 @@ public class OrderController {
         return response;
     }
 
-    /**
-     * 更新維修單.
-     *
-     * @param viewForm
-     * @return
-     */
     @PostMapping("/update")
-    public OrderDoUpdateRs update(@RequestBody OrderDoUpdateRq viewForm) {
+    public OrderDoUpdateRs update(@RequestBody OrderDoUpdateRq viewForm) throws SystemException {
         var response = new OrderDoUpdateRs();
         var rq = new OrderServiceUpdateRq();
         rq.setPhone(viewForm.getPhone());

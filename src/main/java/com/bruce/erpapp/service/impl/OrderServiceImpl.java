@@ -2,6 +2,8 @@ package com.bruce.erpapp.service.impl;
 
 import com.bruce.erpapp.common.emums.GenderType;
 import com.bruce.erpapp.common.emums.OrderFixStatus;
+import com.bruce.erpapp.common.errorhandle.ErrorCode;
+import com.bruce.erpapp.common.errorhandle.exception.SystemException;
 import com.bruce.erpapp.persistent.dao.CustomerDao;
 import com.bruce.erpapp.persistent.dao.OrderDao;
 import com.bruce.erpapp.persistent.entity.CustomerEntity;
@@ -15,9 +17,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -25,7 +26,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service(value = "OrderServiceImpl")
-@Primary
 @Log4j2
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrderServiceImpl implements OrderService {
@@ -33,11 +33,6 @@ public class OrderServiceImpl implements OrderService {
     private final CustomerDao customerDao;
     private final OrderDao orderDao;
 
-    /**
-     * 創建一筆新的orderId給前端.
-     *
-     * @return
-     */
     @Override
     public String queryOrderId() {
         var pattern = "yyyyMMdd";
@@ -52,19 +47,13 @@ public class OrderServiceImpl implements OrderService {
         return orderDate.concat(orderId);
     }
 
-    /**
-     * 儲存一筆維修紀錄.
-     *
-     * @param rq
-     * @return
-     */
     @Override
-    public OrderServiceRs saveOrder(OrderServiceRq rq) {
+    public OrderServiceRs saveOrder(OrderServiceRq rq) throws SystemException {
         var rs = new OrderServiceRs();
         final var systemDate = new Date();
         //  先查客戶
 
-        Long customerId = null;
+        Long customerId;
         var results = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
 
         if (CollectionUtils.isEmpty(results)) { //先寫一筆
@@ -81,7 +70,7 @@ public class OrderServiceImpl implements OrderService {
             customerId = entity.getCustomerId();
         } else if (results.size() != 1) {
             log.warn("customer not only one.");
-//            throw new Exception();
+            throw new SystemException(ErrorCode.CREATE_ORDER_FAIL);
         } else {
             customerId = results.get(0).getCustomerId();
         }
@@ -107,14 +96,9 @@ public class OrderServiceImpl implements OrderService {
         return rs;
     }
 
-    /**
-     * @param rq
-     * @return
-     */
     @Override
     public OrderServiceQueryRs queryOrder(OrderServiceQueryRq rq) {
-        OrderServiceQueryRs rs = queryOrders(rq);
-        return rs;
+        return queryOrders(rq);
     }
 
     @Override
@@ -127,7 +111,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderEntity> orderList = new ArrayList<>(1);
         // 查維修單id
-        if (rq.getOrderId() != null) {
+        if (!Objects.isNull(rq.getOrderId())) {
 
             Optional<OrderEntity> optional = orderDao.findById(rq.getOrderId());
             if (optional.isPresent()) {
@@ -135,10 +119,10 @@ public class OrderServiceImpl implements OrderService {
             }
 
             // 使用客戶姓名查詢
-        } else if (!StringUtils.isEmpty(rq.getCustName())) {
+        } else if (!Objects.isNull(rq.getCustName())) {
 
             var customerEntityList = customerDao.findByCustomerNameLike(rq.getCustName());
-            var customerIdList = customerEntityList.stream().map(customer -> customer.getCustomerId()).collect(Collectors.toList());
+            var customerIdList = customerEntityList.stream().map(CustomerEntity::getCustomerId).collect(Collectors.toList());
             orderList = orderDao.findByCustomerIdInAndCreateTimeBetween(customerIdList, startDate, endDate);
 
             //單純查時間上所有的維修紀錄
@@ -146,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
             orderList = orderDao.findByCreateTimeBetween(startDate, endDate);
         }
 
-        var custIdSet = orderList.stream().map(order -> order.getCustomerId()).collect(Collectors.toSet());
+        var custIdSet = orderList.stream().map(OrderEntity::getCustomerId).collect(Collectors.toSet());
         var customerEntityMap = getCustomerEntityMap(custIdSet);
 
         rs.setOrderBeanList(orderList.stream().map(order -> this.createOrderBean(order, customerEntityMap)).collect(Collectors.toList()));
@@ -172,48 +156,35 @@ public class OrderServiceImpl implements OrderService {
                 .custName(customerEntityMap.get(order.getCustomerId()).getCustomerName()).build();
     }
 
-    /**
-     * 由客戶id查詢整條records.
-     *
-     * @param custIdSet
-     * @return
-     */
     private Map<Long, CustomerEntity> getCustomerEntityMap(Set<Long> custIdSet) {
         List<CustomerEntity> customerEntityList = customerDao.findByCustomerIdIn(custIdSet);
-        return customerEntityList.stream().collect(Collectors.toMap(e -> e.getCustomerId(), e -> e));
+        return customerEntityList.stream().collect(Collectors.toMap(CustomerEntity::getCustomerId, e -> e));
     }
 
-    /**
-     * memo額外設計提出增加方式.
-     *
-     * @param rq
-     */
     @Override
-    public void updateOrder(OrderServiceUpdateRq rq) {
+    @Transactional(rollbackFor = Exception.class)
+    public void updateOrder(OrderServiceUpdateRq rq) throws SystemException {
         final var systemDate = new Date();
-        orderDao.findById(rq.getOrderId()).ifPresentOrElse(
-                (entity) -> {
-                    entity.setFixAmount(rq.getAmount());
-                    entity.setErrorDesc(rq.getErrorDesc());
-                    entity.setDeviceName(rq.getDevice());
-                    entity.setColor(rq.getDeviceColor());
-                    entity.setMemo(rq.getMemo());
-                    entity.setUpdateTime(systemDate);
-                    entity.setStatus(rq.getStatus());
-                    orderDao.save(entity);
-                }, () -> {
-//                    throw new Exception();
-                });
+        var orderEntity = orderDao.findById(rq.getOrderId()).orElseThrow(() -> new SystemException(ErrorCode.UPDATE_ORDER_FAIL));
+        var customerEntityList = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
 
-        var results = customerDao.findByCustomerNameAndPhone(rq.getCustName(), rq.getPhone());
-        if (CollectionUtils.isNotEmpty(results) && CollectionUtils.size(results) == 1) {
-            var entity = results.get(0);
-            entity.setUpdateTime(systemDate);
-            entity.setCustomerName(rq.getCustName());
-            entity.setPhone(rq.getPhone());
-            customerDao.save(entity);
+        if (CollectionUtils.isNotEmpty(customerEntityList) && CollectionUtils.size(customerEntityList) == 1) {
+            orderEntity.setFixAmount(rq.getAmount());
+            orderEntity.setErrorDesc(rq.getErrorDesc());
+            orderEntity.setDeviceName(rq.getDevice());
+            orderEntity.setColor(rq.getDeviceColor());
+            orderEntity.setMemo(rq.getMemo());
+            orderEntity.setUpdateTime(systemDate);
+            orderEntity.setStatus(rq.getStatus());
+            orderDao.save(orderEntity);
+
+            var customerEntity = customerEntityList.get(0);
+            customerEntity.setUpdateTime(systemDate);
+            customerEntity.setCustomerName(rq.getCustName());
+            customerEntity.setPhone(rq.getPhone());
+            customerDao.save(customerEntity);
         } else {
-//            throw new Exception();
+            throw new SystemException(ErrorCode.UPDATE_ORDER_FAIL);
         }
 
     }

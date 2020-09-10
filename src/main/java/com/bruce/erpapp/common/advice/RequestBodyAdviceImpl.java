@@ -8,7 +8,6 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 
 @Log4j2
@@ -40,7 +39,7 @@ public class RequestBodyAdviceImpl implements RequestBodyAdvice {
      * @return the input request or a new instance, never {@code null}
      */
     @Override
-    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
+    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
         log.debug("beforeBodyRead...");
         return inputMessage;
     }

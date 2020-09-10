@@ -19,9 +19,6 @@ public class OrderEntity implements Serializable {
 
     @Column(name = "CUSTOMER_ID", nullable = false)
     private Long customerId;
-//    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-//    @JoinColumn(name = "CUSTOMER_ID")
-//    private CustomerEntity customer;
 
     @Column(name = "DEVICE_NAME", nullable = false)
     @Basic
