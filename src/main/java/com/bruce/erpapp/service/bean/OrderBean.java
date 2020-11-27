@@ -36,10 +36,14 @@ public class OrderBean {
 
     private String status;
 
-    /** 創建日期. */
+    /**
+     * 創建日期.
+     */
     private String date;
 
-    /** 創建時間. */
+    /**
+     * 創建時間.
+     */
     private String time;
 
 }

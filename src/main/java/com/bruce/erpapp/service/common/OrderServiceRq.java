@@ -3,7 +3,6 @@ package com.bruce.erpapp.service.common;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 public class OrderServiceRq {

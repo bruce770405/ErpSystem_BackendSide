@@ -12,7 +12,7 @@ public class SystemExceptionSerializer extends JsonSerializer<SystemException> {
     public void serialize(SystemException value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
 
         jsonGenerator.writeStartObject();
-        
+
         // 回應狀態
         jsonGenerator.writeObjectField("status", value.getStatus());
 

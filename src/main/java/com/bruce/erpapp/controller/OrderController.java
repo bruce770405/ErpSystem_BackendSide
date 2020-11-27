@@ -5,16 +5,19 @@ import com.bruce.erpapp.common.errorhandle.exception.SystemException;
 import com.bruce.erpapp.common.utils.ConvertPlusUtils;
 import com.bruce.erpapp.controller.models.*;
 import com.bruce.erpapp.service.OrderService;
-import com.bruce.erpapp.service.common.OrderServiceQueryRq;
+import com.bruce.erpapp.service.common.OrderServiceQueryBo;
 import com.bruce.erpapp.service.common.OrderServiceRq;
-import com.bruce.erpapp.service.common.OrderServiceUpdateRq;
+import com.bruce.erpapp.service.common.OrderServiceUpdateBo;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/order")
@@ -24,27 +27,27 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/query")
-    public OrderDoQueryRs query(@RequestBody OrderDoQueryRq viewForm) throws ParseException {
+    public OrderDoQueryRs query(@RequestBody OrderDoQueryRq viewForm) {
         var response = new OrderDoQueryRs();
-        var rq = new OrderServiceQueryRq();
-        rq.setEndDate(StringUtils.isEmpty(viewForm.getEndDate()) ? null : DateUtils.parseDate(viewForm.getEndDate(), "yyyy/MM/dd"));
-        rq.setStartDate(StringUtils.isEmpty(viewForm.getStartDate()) ? null : DateUtils.parseDate(viewForm.getStartDate(), "yyyy/MM/dd"));
-        rq.setCustName(viewForm.getCustName());
-        rq.setOrderId(viewForm.getOrderId());
-        rq.setPhone(viewForm.getPhone());
-        rq.setStatus(OrderFixStatus.findByCode(viewForm.getStatus()));
-        var rs = orderService.queryOrders(rq);
-        response.setOrderBeanList(rs.getOrderBeanList());
+        var serviceQueryBo = new OrderServiceQueryBo();
+        serviceQueryBo.setEndDate(StringUtils.isEmpty(viewForm.getEndDate()) ? null : LocalDate.parse(viewForm.getEndDate(), DateTimeFormatter.ofPattern("yyyy/MM/dd")));
+        serviceQueryBo.setStartDate(StringUtils.isEmpty(viewForm.getStartDate()) ? null : LocalDate.parse(viewForm.getStartDate(), DateTimeFormatter.ofPattern("yyyy/MM/dd")));
+        serviceQueryBo.setCustName(viewForm.getCustName());
+        serviceQueryBo.setOrderId(viewForm.getOrderId());
+        serviceQueryBo.setPhone(viewForm.getPhone());
+        serviceQueryBo.setStatus(OrderFixStatus.findByCode(viewForm.getStatus()));
+        var orderBeanList = orderService.queryOrders(serviceQueryBo);
+        response.setOrderBeanList(orderBeanList);
         return response;
     }
 
     @GetMapping("/query/{orderKey}")
     public OrderDoQueryOneRs queryOneItem(@PathVariable("orderKey") String orderKxy) {
         var response = new OrderDoQueryOneRs();
-        var rq = new OrderServiceQueryRq();
+        var rq = new OrderServiceQueryBo();
         rq.setOrderId(orderKxy);
         var rs = orderService.queryOrder(rq);
-        response.setOrder(rs.getOrderBeanList().get(0));
+        response.setOrder(rs.get(0));
         return response;
     }
 
@@ -72,8 +75,7 @@ public class OrderController {
 
     @PostMapping("/update")
     public OrderDoUpdateRs update(@RequestBody OrderDoUpdateRq viewForm) throws SystemException {
-        var response = new OrderDoUpdateRs();
-        var rq = new OrderServiceUpdateRq();
+        var rq = new OrderServiceUpdateBo();
         rq.setPhone(viewForm.getPhone());
         rq.setOrderId(viewForm.getOrderId());
         rq.setMemo(viewForm.getMemo());
@@ -86,7 +88,7 @@ public class OrderController {
         rq.setPin(viewForm.getDevicePin());
         rq.setStatus(viewForm.getStatusCode());
         orderService.updateOrder(rq);
-        return response;
+        return new OrderDoUpdateRs();
     }
 
 }

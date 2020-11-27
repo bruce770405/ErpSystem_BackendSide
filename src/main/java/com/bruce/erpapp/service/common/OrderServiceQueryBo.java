@@ -3,10 +3,10 @@ package com.bruce.erpapp.service.common;
 import com.bruce.erpapp.common.emums.OrderFixStatus;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
-public class OrderServiceQueryRq {
+public class OrderServiceQueryBo {
 
     private String orderId;
 
@@ -14,11 +14,10 @@ public class OrderServiceQueryRq {
 
     private String phone;
 
-    private Date startDate;
+    private LocalDate startDate;
 
-    private Date endDate;
+    private LocalDate endDate;
 
     private OrderFixStatus status;
-
 
 }

@@ -1,25 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c5edc0-37c5-4a8c-ae27-39407874eb8c" name="Default Changelist" comment="" />
+    <list default="true" id="b5c5edc0-37c5-4a8c-ae27-39407874eb8c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/erpapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/erpapp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/emums/GenderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/emums/GenderType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/emums/OrderFixStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/emums/OrderFixStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/ErrorStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/ErrorStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/exception/DatabaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/exception/DatabaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/exception/SystemException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/exception/SystemException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/serializer/SystemExceptionDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/serializer/SystemExceptionDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/serializer/SystemExceptionSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/errorhandle/serializer/SystemExceptionSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/utils/ConvertPlusUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/common/utils/ConvertPlusUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/dao/CustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/dao/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/entity/CustomerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/entity/CustomerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/entity/OrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/persistent/entity/OrderEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/bean/OrderBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/bean/OrderBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceQueryRq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceQueryBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceQueryRs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceRq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceRq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceUpdateRq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/common/OrderServiceUpdateBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bruce/erpapp/ErpappApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bruce/erpapp/ErpappApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/advice/RequestBodyAdviceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/advice/RequestBodyAdviceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/advice/SystemExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/advice/SystemExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/errorhandle/ErrorStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/errorhandle/ErrorStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/models/RequestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/models/RequestData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/utils/ConvertPlusUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/common/utils/ConvertPlusUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bruce/erpapp/service/common/OrderServiceQueryRq.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,10 +63,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1b4UmaVT3TLIQ7gao24Ya0p0fJy" />
@@ -51,11 +76,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowAnt.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -63,7 +91,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/bruce/erpapp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -71,9 +103,9 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/bruce/erpapp/config" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.erpapp [install]">
-    <configuration name="ErpappApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bruce.erpapp.ErpappApplication" />
+  <component name="RunManager" selected="JUnit.Test.test">
+    <configuration name="ErpApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bruce.erpapp.ErpApplication" />
       <module name="erpapp" />
       <extension name="coverage">
         <pattern>
@@ -81,6 +113,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="erpapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bruce.erpapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bruce.erpapp" />
+      <option name="MAIN_CLASS_NAME" value="com.bruce.erpapp.Test" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,20 +158,30 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="ErpappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ErpappApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="erpapp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bruce.erpapp.ErpappApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ErpappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="erpapp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bruce.erpapp.ErpApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Test.test" />
+        <item itemvalue="Spring Boot.ErpappApplication" />
         <item itemvalue="Maven.erpapp [install]" />
-        <item itemvalue="Application.ErpappApplication" />
+        <item itemvalue="Application.ErpApplication" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -182,107 +240,93 @@
       <workItem from="1595053325827" duration="4459000" />
       <workItem from="1595561986745" duration="800000" />
       <workItem from="1596434675099" duration="7475000" />
-      <workItem from="1596607602486" duration="3512000" />
+      <workItem from="1596607602486" duration="4306000" />
+      <workItem from="1596641713534" duration="722000" />
+      <workItem from="1596678986094" duration="630000" />
+      <workItem from="1596871842343" duration="538000" />
+      <workItem from="1596942945247" duration="3288000" />
+      <workItem from="1596985815478" duration="2661000" />
+      <workItem from="1598790988629" duration="56000" />
+      <workItem from="1598794778845" duration="4357000" />
+      <workItem from="1602603452943" duration="666000" />
+      <workItem from="1602869041781" duration="1388000" />
+      <workItem from="1602870470281" duration="212000" />
+      <workItem from="1602930882795" duration="566000" />
+      <workItem from="1605793745211" duration="30000" />
+      <workItem from="1605793792413" duration="73000" />
+      <workItem from="1606053955134" duration="5540000" />
+      <workItem from="1606491922214" duration="785000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="169" key="#Assign_Data_Sources" timestamp="1588438637497">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state x="746" y="402" width="705" height="204" key="#Assign_Data_Sources" timestamp="1598798004829">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="440" y="169" key="#Assign_Data_Sources/0.23.1680.965@0.23.1680.965" timestamp="1588438637497" />
-    <state x="440" y="169" key="#Auto_Import" timestamp="1588499627884">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state x="746" y="402" width="705" height="204" key="#Assign_Data_Sources/0.23.1680.962@0.23.1680.962" timestamp="1598798004829" />
+    <state x="328" y="85" key="#Project_Structure" timestamp="1598797751907">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="440" y="169" key="#Auto_Import/0.23.1680.965@0.23.1680.965" timestamp="1588499627884" />
-    <state x="653" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1595053537492">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state x="328" y="85" key="#Project_Structure/0.23.1680.962@0.23.1680.962" timestamp="1598797751907" />
+    <state x="440" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598797961076">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="653" y="220" key="#com.intellij.ide.util.MemberChooser/0.23.1680.965@0.23.1680.965" timestamp="1595053537492" />
-    <state x="653" y="221" key="#com.intellij.ide.util.MemberChooser/0.23.1680.972@0.23.1680.972" timestamp="1588238953150" />
-    <state x="746" y="226" key="#com.intellij.ide.util.MemberChooser/0.23.1920.992@0.23.1920.992" timestamp="1594124738198" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom" timestamp="1596613112204">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state x="440" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.962@0.23.1680.962" timestamp="1598797961076" />
+    <state x="507" y="220" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598797524340">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1596613112204" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1596444096214" />
-    <state width="1638" height="259" key="GridCell.Tab.0.bottom/0.23.1680.966@0.23.1680.966" timestamp="1595217714798" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.967@0.23.1680.967" timestamp="1588238099822" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1588239013839" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center" timestamp="1596613112204">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state x="507" y="220" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.962@0.23.1680.962" timestamp="1598797524340" />
+    <state width="1636" height="253" key="GridCell.Tab.0.bottom" timestamp="1606491576779">
+      <screen x="0" y="25" width="1680" height="955" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1596613112204" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1596444096213" />
-    <state width="1638" height="259" key="GridCell.Tab.0.center/0.23.1680.966@0.23.1680.966" timestamp="1595217714797" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.967@0.23.1680.967" timestamp="1588238099821" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1588239013838" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left" timestamp="1596613112203">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.962@0.23.1680.962" timestamp="1599754939447" />
+    <state width="1636" height="253" key="GridCell.Tab.0.bottom/0.25.1680.955@0.25.1680.955" timestamp="1606491576779" />
+    <state width="1636" height="253" key="GridCell.Tab.0.center" timestamp="1606491576779">
+      <screen x="0" y="25" width="1680" height="955" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1596613112203" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1596444096213" />
-    <state width="1638" height="259" key="GridCell.Tab.0.left/0.23.1680.966@0.23.1680.966" timestamp="1595217714796" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.967@0.23.1680.967" timestamp="1588238099820" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1588239013838" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right" timestamp="1596613112204">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.962@0.23.1680.962" timestamp="1599754939446" />
+    <state width="1636" height="253" key="GridCell.Tab.0.center/0.25.1680.955@0.25.1680.955" timestamp="1606491576779" />
+    <state width="1636" height="253" key="GridCell.Tab.0.left" timestamp="1606491576779">
+      <screen x="0" y="25" width="1680" height="955" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1596613112204" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1596444096214" />
-    <state width="1638" height="259" key="GridCell.Tab.0.right/0.23.1680.966@0.23.1680.966" timestamp="1595217714798" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.967@0.23.1680.967" timestamp="1588238099821" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1588239013838" />
-    <state width="1638" height="320" key="GridCell.Tab.1.bottom" timestamp="1593855098492">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.962@0.23.1680.962" timestamp="1599754939445" />
+    <state width="1636" height="253" key="GridCell.Tab.0.left/0.25.1680.955@0.25.1680.955" timestamp="1606491576779" />
+    <state width="1636" height="253" key="GridCell.Tab.0.right" timestamp="1606491576779">
+      <screen x="0" y="25" width="1680" height="955" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.bottom/0.23.1680.965@0.23.1680.965" timestamp="1593855098492" />
-    <state width="1638" height="258" key="GridCell.Tab.1.bottom/0.23.1680.967@0.23.1680.967" timestamp="1588238099823" />
-    <state width="1638" height="258" key="GridCell.Tab.1.bottom/0.23.1680.972@0.23.1680.972" timestamp="1588239013840" />
-    <state width="1638" height="320" key="GridCell.Tab.1.center" timestamp="1593855098491">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.962@0.23.1680.962" timestamp="1599754939446" />
+    <state width="1636" height="253" key="GridCell.Tab.0.right/0.25.1680.955@0.25.1680.955" timestamp="1606491576779" />
+    <state width="1638" height="258" key="GridCell.Tab.1.bottom" timestamp="1599754939448">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.center/0.23.1680.965@0.23.1680.965" timestamp="1593855098491" />
-    <state width="1638" height="258" key="GridCell.Tab.1.center/0.23.1680.967@0.23.1680.967" timestamp="1588238099823" />
-    <state width="1638" height="258" key="GridCell.Tab.1.center/0.23.1680.972@0.23.1680.972" timestamp="1588239013839" />
-    <state width="1638" height="320" key="GridCell.Tab.1.left" timestamp="1593855098491">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state width="1638" height="258" key="GridCell.Tab.1.bottom/0.23.1680.962@0.23.1680.962" timestamp="1599754939448" />
+    <state width="1638" height="258" key="GridCell.Tab.1.center" timestamp="1599754939447">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.left/0.23.1680.965@0.23.1680.965" timestamp="1593855098491" />
-    <state width="1638" height="258" key="GridCell.Tab.1.left/0.23.1680.967@0.23.1680.967" timestamp="1588238099822" />
-    <state width="1638" height="258" key="GridCell.Tab.1.left/0.23.1680.972@0.23.1680.972" timestamp="1588239013839" />
-    <state width="1638" height="320" key="GridCell.Tab.1.right" timestamp="1593855098491">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state width="1638" height="258" key="GridCell.Tab.1.center/0.23.1680.962@0.23.1680.962" timestamp="1599754939447" />
+    <state width="1638" height="258" key="GridCell.Tab.1.left" timestamp="1599754939447">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.right/0.23.1680.965@0.23.1680.965" timestamp="1593855098491" />
-    <state width="1638" height="258" key="GridCell.Tab.1.right/0.23.1680.967@0.23.1680.967" timestamp="1588238099823" />
-    <state width="1638" height="258" key="GridCell.Tab.1.right/0.23.1680.972@0.23.1680.972" timestamp="1588239013839" />
-    <state x="341" y="144" key="SettingsEditor" timestamp="1594625820777">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state width="1638" height="258" key="GridCell.Tab.1.left/0.23.1680.962@0.23.1680.962" timestamp="1599754939447" />
+    <state width="1638" height="258" key="GridCell.Tab.1.right" timestamp="1599754939448">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="341" y="144" key="SettingsEditor/0.23.1680.965@0.23.1680.965" timestamp="1594625820777" />
-    <state x="390" y="147" key="SettingsEditor/0.23.1920.992@0.23.1920.992" timestamp="1594125621196" />
-    <state x="623" y="288" key="chooseDestDirectoryDialog" timestamp="1588238165246">
-      <screen x="0" y="23" width="1680" height="967" />
+    <state width="1638" height="258" key="GridCell.Tab.1.right/0.23.1680.962@0.23.1680.962" timestamp="1599754939448" />
+    <state x="428" y="246" key="IDE.errors.dialog" timestamp="1602870464969">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="623" y="288" key="chooseDestDirectoryDialog/0.23.1680.967@0.23.1680.967" timestamp="1588238165246" />
-    <state x="623" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592476717338">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state x="428" y="246" key="IDE.errors.dialog/0.23.1680.962@0.23.1680.962" timestamp="1602870464969" />
+    <state x="378" y="166" key="Maven.ArtifactSearchDialog" timestamp="1602603734877">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="623" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.965@0.23.1680.965" timestamp="1592476717338" />
-    <state x="421" y="228" width="837" height="550" key="find.popup" timestamp="1588528657362">
-      <screen x="0" y="23" width="1680" height="965" />
+    <state x="378" y="166" key="Maven.ArtifactSearchDialog/0.23.1680.962@0.23.1680.962" timestamp="1602603734877" />
+    <state x="341" y="144" key="SettingsEditor" timestamp="1602870339011">
+      <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="421" y="228" width="837" height="550" key="find.popup/0.23.1680.965@0.23.1680.965" timestamp="1588528657362" />
-    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup" timestamp="1594637369955">
-      <screen x="0" y="23" width="1680" height="965" />
-    </state>
-    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup/0.23.1680.965@0.23.1680.965" timestamp="1594637369955" />
-    <state x="505" y="234" width="670" height="677" key="search.everywhere.popup/0.23.1680.966@0.23.1680.966" timestamp="1593585507271" />
-    <state x="577" y="240" width="766" height="695" key="search.everywhere.popup/0.23.1920.992@0.23.1920.992" timestamp="1594125578786" />
+    <state x="341" y="144" key="SettingsEditor/0.23.1680.962@0.23.1680.962" timestamp="1602870339011" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

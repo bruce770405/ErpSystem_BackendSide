@@ -14,18 +14,18 @@ public enum OrderFixStatus {
     UNKNOWN("9", "未知");
 
     @Getter
-    private String code;
+    private final String code;
 
     @Getter
-    private String memo;
+    private final String memo;
 
 
-    private OrderFixStatus(String code, String memo) {
+    OrderFixStatus(String code, String memo) {
         this.code = code;
         this.memo = memo;
     }
 
     public static OrderFixStatus findByCode(String code) {
-        return Arrays.asList(OrderFixStatus.values()).stream().filter(type -> type.getCode().equals(code)).findFirst().orElseGet(() -> UNKNOWN);
+        return Arrays.stream(OrderFixStatus.values()).filter(type -> type.getCode().equals(code)).findFirst().orElse(UNKNOWN);
     }
 }

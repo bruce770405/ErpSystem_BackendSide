@@ -1,7 +1,10 @@
 package com.bruce.erpapp.service;
 
 import com.bruce.erpapp.common.errorhandle.exception.SystemException;
+import com.bruce.erpapp.service.bean.OrderBean;
 import com.bruce.erpapp.service.common.*;
+
+import java.util.List;
 
 /**
  * 維修單service.
@@ -12,9 +15,9 @@ public interface OrderService {
 
     OrderServiceRs saveOrder(OrderServiceRq rq) throws SystemException;
 
-    OrderServiceQueryRs queryOrder(OrderServiceQueryRq rq);
+    List<OrderBean> queryOrder(OrderServiceQueryBo rq);
 
-    OrderServiceQueryRs queryOrders(OrderServiceQueryRq rq);
+    List<OrderBean> queryOrders(OrderServiceQueryBo rq);
 
-    void updateOrder(OrderServiceUpdateRq rq) throws SystemException;
+    void updateOrder(OrderServiceUpdateBo rq) throws SystemException;
 }

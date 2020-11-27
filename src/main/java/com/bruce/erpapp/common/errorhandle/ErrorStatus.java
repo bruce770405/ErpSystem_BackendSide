@@ -1,8 +1,5 @@
 package com.bruce.erpapp.common.errorhandle;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import java.io.Serializable;
 
 public class ErrorStatus implements Serializable {
@@ -48,34 +45,6 @@ public class ErrorStatus implements Serializable {
         this.systemId = code.getSystemId();
         this.errorCode = code.getCode();
         this.errorDesc = code.getMessage();
-    }
-
-    @Override
-    public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-         return EqualsBuilder.reflectionEquals(this, obj);
-//        if (obj == this) {
-//            return true;
-//        }
-//        if (null == obj) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//
-//            return false;
-//        }
-//
-//        ErrorStatus status = (ErrorStatus)obj;
-//
-//        String errorCode1 = getPureErrorCode(errorCode);
-//
-//        String errorCode2 = getPureErrorCode(status.getErrorCode());
-//
-//        return StringUtilsEx.equals(systemId, status.getSystemId()) && StringUtilsEx.equals(errorCode1, errorCode2);
     }
 
 }

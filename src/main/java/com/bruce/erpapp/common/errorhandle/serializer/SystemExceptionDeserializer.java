@@ -1,5 +1,6 @@
 package com.bruce.erpapp.common.errorhandle.serializer;
 
+import com.bruce.erpapp.common.errorhandle.ErrorCode;
 import com.bruce.erpapp.common.errorhandle.ErrorStatus;
 import com.bruce.erpapp.common.errorhandle.exception.SystemException;
 import com.bruce.erpapp.common.utils.JsonUtils;
@@ -18,7 +19,7 @@ public class SystemExceptionDeserializer extends JsonDeserializer<SystemExceptio
     @Override
     public SystemException deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
 
-        SystemException error = new SystemException();
+        SystemException error = new SystemException(ErrorCode.SUCCESS);
 
         JsonNode node = jp.readValueAsTree();
 

@@ -1,7 +1,7 @@
 package com.bruce.erpapp.common.utils;
 
 import org.apache.commons.beanutils.ConvertUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 
@@ -26,11 +26,10 @@ public class ConvertPlusUtils extends ConvertUtils {
 
         BigDecimal value = null;
         try {
-            sValue = StringUtils.trim(sValue);
-            // Leo: 去除","
-            sValue = StringUtils.remove(sValue, ",");
+            sValue = StringUtils.trimAllWhitespace(sValue);
+            sValue = StringUtils.replace(sValue, ",", "");
 
-            value = new BigDecimal(StringUtils.trim(sValue));
+            value = new BigDecimal(StringUtils.trimAllWhitespace(sValue));
 
             if (iScale >= 0) {
 

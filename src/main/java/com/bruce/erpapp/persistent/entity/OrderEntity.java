@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -54,10 +55,10 @@ public class OrderEntity implements Serializable {
 
     @Column(name = "CREATE_TIME", nullable = false)
     @Basic
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @Column(name = "UPDATE_TIME")
     @Basic
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
 }

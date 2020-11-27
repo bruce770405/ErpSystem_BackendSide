@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -35,11 +35,11 @@ public class CustomerEntity implements Serializable {
     @Column(name = "GENDER")
     private Integer gender;
 
-    @Column(name = "CREATE_TIME", nullable = false)
-    private Date createTime;
+    @Column(name = "CREATE_TIME", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime createTime;
 
-    @Column(name = "UPDATE_TIME")
-    private Date updateTime;
+    @Column(name = "UPDATE_TIME", columnDefinition = "TIMESTAMP")
+    private LocalDateTime updateTime;
 
     //mappedBy="CUSTOMER_ID"中的CUSTOMER_ID是Article中的CUSTOMER_ID属性
 //    @OneToMany(mappedBy = "CUSTOMER_ID", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -6,15 +6,13 @@ import com.bruce.erpapp.common.errorhandle.serializer.SystemExceptionDeserialize
 import com.bruce.erpapp.common.errorhandle.serializer.SystemExceptionSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
 @JsonSerialize(using = SystemExceptionSerializer.class)
 @JsonDeserialize(using = SystemExceptionDeserializer.class)
-@NoArgsConstructor
 public class SystemException extends Exception {
 
     /**

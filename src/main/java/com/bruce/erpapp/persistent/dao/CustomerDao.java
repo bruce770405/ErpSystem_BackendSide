@@ -13,25 +13,16 @@ public interface CustomerDao extends JpaRepository<CustomerEntity, Long> {
 
     /**
      * 利用username查找使用者.
-     *
-     * @param customerName
-     * @return
      */
     List<CustomerEntity> findByCustomerNameLike(String customerName);
 
     /**
      * 利用username和電話查找使用者.
-     *
-     * @param customerName
-     * @return
      */
     List<CustomerEntity> findByCustomerNameAndPhone(String customerName, String phone);
 
     /**
      * 利用userid查找使用者.
-     *
-     * @param customerIdList
-     * @return
      */
     List<CustomerEntity> findByCustomerIdIn(Set<Long> customerIdList);
 }
